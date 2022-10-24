@@ -13,6 +13,7 @@ import App from "./App";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductsPage } from "./pages/ProductsPage";
 import { CategoriesPage } from "./pages/CategoriesPage";
+import { ProductPage } from "./pages/ProductPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -25,15 +26,9 @@ root.render(
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />}></Route>
             <Route path="/contact" element={<ContactPage />}></Route>
-            <Route path="/products" element={<ProductsPage />}></Route>
+            <Route path="products" element={<ProductsPage />}></Route>
+            <Route path="/products/:productId" element={<ProductPage />} />
             <Route path="/categories" element={<CategoriesPage />}></Route>
-
-            {/* <Route index element={<Home />} />
-            <Route path="teams" element={<Teams />}>
-              <Route path=":teamId" element={<Team />} />
-              <Route path="new" element={<NewTeamForm />} />
-              <Route index element={<LeagueStandings />} /> */}
-            {/* </Route> */}
           </Route>
         </Routes>
       </Provider>
