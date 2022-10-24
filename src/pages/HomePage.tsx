@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import ProductsAPI from "../services/ProductsAPI";
+import useSWR from "swr";
 
 export const HomePage = () => {
-  const [state, setState] = useState(null);
+  const { data, error } = useSWR(
+    "women's clothing",
+    ProductsAPI.getAllProductsInCategory
+  );
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products/1")
-      .then((res) => res.json())
-      .then((json) => setState(json));
-  }, []);
+  const [state, setState] = useState([]);
 
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
   return (
     <div>
-      homepage
-      <div>{state && <div>{state.title}</div>}</div>
+      {data[0].title}
+      <div></div>
     </div>
   );
 };
