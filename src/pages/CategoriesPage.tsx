@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useSWR from "swr";
+import { ProductsGrid } from "../components/ProductsGrid";
 import ProductsAPI from "../services/ProductsAPI";
 
 export const CategoriesPage = () => {
@@ -15,6 +16,7 @@ export const CategoriesPage = () => {
     ProductsAPI.get
   );
 
+  console.log("categoryData");
   console.log(categoryData.data);
 
   if (error) return <div>failed to load</div>;
@@ -28,18 +30,13 @@ export const CategoriesPage = () => {
           </div>
         );
       })}
-      <div></div>
+
       <div>
         <div className="h-10 bg-slate-400">
           <h2>Category Items</h2>
         </div>
       </div>
-      <div>
-        {categoryData.data &&
-          categoryData.data.map((product: any) => {
-            return <div>{product.title}</div>;
-          })}
-      </div>
+      {categoryData.data && <ProductsGrid data={categoryData.data} />}
     </div>
   );
 };

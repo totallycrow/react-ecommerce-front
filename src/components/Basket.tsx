@@ -52,8 +52,6 @@ export const Basket = () => {
           <div>
             {basketState[item].title}
             <div>Qty: {basketState[item].qty}</div>
-            {/* <div>{data && data[item].title}</div>
-            <div>{data && data[item].price}</div> */}
           </div>
         ))}
       </div>

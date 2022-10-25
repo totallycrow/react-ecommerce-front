@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
+import { CartControls } from "../components/CartControls";
 import ProductsAPI from "../services/ProductsAPI";
 
 export const ProductPage = () => {
@@ -17,7 +18,8 @@ export const ProductPage = () => {
         <p>Price: {data.price}</p>
         <p>Description: {data.description}</p>
         <p>Category: {data.category}</p>
-        <img src={data.image} alt={data.title} />
+        <img src={data.image} alt={data.title} className="w-40 h-40" />
+        <CartControls item={data} />
       </div>
     </div>
   );
