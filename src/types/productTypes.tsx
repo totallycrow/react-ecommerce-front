@@ -6,3 +6,8 @@ export interface IProduct {
   description: string;
   image: string;
 }
+
+interface IBasketItem {
+  itemId: string;
+  qty: number;
+}

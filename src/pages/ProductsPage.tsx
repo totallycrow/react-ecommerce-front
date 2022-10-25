@@ -4,18 +4,18 @@ import useSWR from "swr";
 import ProductsAPI from "../services/ProductsAPI";
 
 export const ProductsPage = () => {
-  const { data, error } = useSWR("getAllProducts", ProductsAPI.getAllProducts);
+  const { data, error } = useSWR("products", ProductsAPI.get);
   return (
     <div>
       ProductsPage
-      <div className="w-2/3 m-auto grid grid-cols-3">
+      <div className="grid grid-cols-3">
         {data &&
           data.map((item: any) => (
             <div>
               <Link to={"/products/" + item.id}>
                 <img
                   src={item.image}
-                  className="w-20 h-20"
+                  className="w-24 h-24"
                   alt={item.name}
                 ></img>
               </Link>
