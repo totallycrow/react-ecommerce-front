@@ -25,6 +25,8 @@ export const CategoriesPage = () => {
           <h2>Category Items</h2>
         </div>
       </div>
+      {/* ?? */}
+      {/* @ts-ignore */}
       {categoryData.data && <ProductsGrid data={categoryData.data} />}
     </div>
   );

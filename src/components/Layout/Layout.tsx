@@ -4,7 +4,11 @@ import { Footer } from "../Footer";
 import { PromoBar } from "../PromoBar";
 import { Basket } from "../Basket";
 
-export const Layout = ({ children }: any) => {
+interface ILayoutProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+export const Layout = ({ children }: ILayoutProps) => {
   return (
     <div>
       <PromoBar />

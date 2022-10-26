@@ -1,16 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import { IProduct, IProductsData } from "../types/productTypes";
+import { IProductsData } from "../types/productTypes";
 import { ProductTile } from "./ProductTile";
 
-export const ProductsGrid = ({ data }: any) => {
-  console.log("Products grid");
-  console.log(data);
-
+// export const ProductsGrid = ({ data }: Array<IProduct>) => {
+export const ProductsGrid: React.FC<IProductsData> = ({
+  data,
+}: IProductsData) => {
   return (
     <div>
       <div className="w-2/3 m-auto grid grid-cols-3">
-        {data && data.map((item: any) => <ProductTile item={item} />)}
+        {data && data.map((item) => <ProductTile item={item} />)}
       </div>
     </div>
   );

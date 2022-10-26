@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 
@@ -13,14 +13,11 @@ export const useBasketManager = () => {
 
   //   MONITOR TOTAL PRICE
   useEffect(() => {
-    console.log(basketState);
     const totals = basketItems.map(
-      (item: any) => basketState[item].price * 100 * basketState[item].qty
+      (item) => basketState[item].price * 100 * basketState[item].qty
     );
-    console.log(totals);
 
     const sum = totals.reduce((prev, curr) => prev + curr, 0) / 100;
-    console.log(sum / 100);
 
     if (isDiscount) {
       const discountTotals = sum - sum * 0.2;
@@ -30,7 +27,6 @@ export const useBasketManager = () => {
 
   //   MONITOR PROMO CODE
   useEffect(() => {
-    console.log(promoInput.toUpperCase() === mockPromo);
     if (promoInput.toUpperCase() === mockPromo) {
       setIsDiscount(true);
     } else setIsDiscount(false);

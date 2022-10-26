@@ -14,7 +14,7 @@ export const Basket = () => {
         placeholder="PROMO CODE"
       />
       <div>
-        {basketItems.map((item: any) => (
+        {basketItems.map((item) => (
           <div>
             {basketState[item].title}
             <div>Qty: {basketState[item].qty}</div>

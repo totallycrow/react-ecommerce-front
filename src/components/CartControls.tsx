@@ -2,8 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateBasket } from "../slices/basketSlice";
 import { RootState } from "../store/store";
+import { IProductTile } from "../types/productTypes";
 
-export const CartControls = ({ item }: any) => {
+// export const CartControls = ({ item }: IProduct) => {
+export const CartControls: React.FC<IProductTile> = ({
+  item,
+}: IProductTile) => {
   const dispatch = useDispatch();
   const basketState = useSelector((state: RootState) => state.basket);
   return (

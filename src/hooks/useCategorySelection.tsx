@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import ProductsAPI from "../services/ProductsAPI";
 
@@ -7,8 +7,6 @@ export const useCategorySelection = () => {
   const { data, error } = useSWR("products/categories", (arg0) =>
     ProductsAPI.get<Array<string>>(arg0)
   );
-
-  console.log(category);
 
   const shouldFetch = category === null ? false : true;
 

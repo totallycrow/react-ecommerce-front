@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface IBasketItem {
+export interface IBasketItem {
   id: string;
   qty: number;
   image: string;
@@ -25,11 +24,9 @@ export const basket = createSlice({
   initialState,
   reducers: {
     updateBasket: (state, action: IAction) => {
-      const isBasketEmpty = Object.keys(state).length === 0;
       const qtyChange = action.payload.qty;
-
       const targetProductId = action.payload.id;
-      const { qty, image, title, price } = action.payload;
+      const { image, title, price } = action.payload;
 
       // if not in basket - add to basket
       if (state[targetProductId] === undefined && qtyChange === 1) {

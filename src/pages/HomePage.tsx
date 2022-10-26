@@ -11,7 +11,6 @@ export const HomePage = () => {
     "products/category/" + featuredHomepageCategory,
     (arg0) => ProductsAPI.get<Array<IProduct>>(arg0)
   );
-  console.log(data);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
