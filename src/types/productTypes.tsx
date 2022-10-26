@@ -7,7 +7,14 @@ export interface IProduct {
   image: string;
 }
 
-interface IBasketItem {
-  itemId: string;
-  qty: number;
+export interface IProductProps {
+  data: IProduct;
+}
+
+export interface IProductsData {
+  data: Array<IProduct>;
+}
+
+export interface IProductTile {
+  item: IProduct;
 }

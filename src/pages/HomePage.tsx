@@ -2,16 +2,20 @@ import ProductsAPI from "../services/ProductsAPI";
 import useSWR from "swr";
 
 import { ProductsGrid } from "../components/ProductsGrid";
+import { IProduct } from "../types/productTypes";
+
+const featuredHomepageCategory = "women's clothing";
 
 export const HomePage = () => {
-  const featuredHomepageCategory = "women's clothing";
-
   const { data, error } = useSWR(
     "products/category/" + featuredHomepageCategory,
-    ProductsAPI.get
+    (arg0) => ProductsAPI.get<Array<IProduct>>(arg0)
   );
+  console.log(data);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
+  if (error) return <div>Error Fetching Data</div>;
+  if (data instanceof Error) return <div>Error Fetching Data</div>;
   return <ProductsGrid data={data} />;
 };

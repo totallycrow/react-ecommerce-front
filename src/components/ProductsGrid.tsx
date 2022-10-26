@@ -1,13 +1,9 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { updateBasket } from "../slices/basketSlice";
 import { RootState } from "../store/store";
+import { IProduct, IProductsData } from "../types/productTypes";
 import { ProductTile } from "./ProductTile";
 
 export const ProductsGrid = ({ data }: any) => {
-  const dispatch = useDispatch();
-  const basketState = useSelector((state: RootState) => state.basket);
   console.log("Products grid");
   console.log(data);
 

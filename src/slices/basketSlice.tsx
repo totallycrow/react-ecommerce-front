@@ -31,7 +31,7 @@ export const basket = createSlice({
       const targetProductId = action.payload.id;
       const { qty, image, title, price } = action.payload;
 
-      // if not in basket
+      // if not in basket - add to basket
       if (state[targetProductId] === undefined && qtyChange === 1) {
         state[targetProductId] = {
           id: targetProductId,
@@ -43,14 +43,17 @@ export const basket = createSlice({
         return;
       }
 
-      if (state[targetProductId].qty === 0 && qtyChange === -1) return state;
+      // Remove from basket
+      if (state[targetProductId].qty === 1 && qtyChange === -1) {
+        delete state[targetProductId];
+        return state;
+      }
 
+      // Handle qty change
       state[targetProductId].qty += qtyChange;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
 export const { updateBasket } = basket.actions;
-
 export default basket.reducer;

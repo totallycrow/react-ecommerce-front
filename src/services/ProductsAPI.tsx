@@ -17,14 +17,14 @@ export default class ProductsAPI {
   //   return data;
   // }
 
-  public static async get(endpoint: string) {
+  public static async get<T>(endpoint: string): Promise<T | Error> {
     const targetURL = host + endpoint;
     console.log(targetURL);
     try {
       const data = await axios.get(targetURL).then((res) => res.data);
       return data;
     } catch (err) {
-      return err;
+      return err as Error;
     }
   }
 
@@ -39,7 +39,7 @@ export default class ProductsAPI {
         )
       );
       let formattedData: IFetchedData = {};
-      fetchedData.forEach((item: any) => {
+      fetchedData.forEach((item) => {
         console.log("FETCHED DATA MAP");
         console.log(item);
 
@@ -53,6 +53,7 @@ export default class ProductsAPI {
     }
   }
 
-  public static fetcher = (url: any) => axios.get(url).then((res) => res.data);
+  public static fetcher = (url: string) =>
+    axios.get(url).then((res) => res.data);
 }
 // https://fakestoreapi.com/products/categories

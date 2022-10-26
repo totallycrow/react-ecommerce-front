@@ -1,27 +1,16 @@
-import React, { useState } from "react";
-import useSWR from "swr";
 import { ProductsGrid } from "../components/ProductsGrid";
-import ProductsAPI from "../services/ProductsAPI";
+import { useCategorySelection } from "../hooks/useCategorySelection";
 
 export const CategoriesPage = () => {
-  const [category, setCategory] = useState<string | null>(null);
-  const { data, error } = useSWR("products/categories", ProductsAPI.get);
+  const { data, categoryData, error, setCategory } = useCategorySelection();
 
-  console.log(category);
-
-  const shouldFetch = category === null ? false : true;
-
-  const categoryData = useSWR(
-    shouldFetch ? "products/category/" + category : null,
-    ProductsAPI.get
-  );
-
-  console.log("categoryData");
-  console.log(categoryData.data);
-
+  if (data instanceof Error) return <div>Error Fetching Data</div>;
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
+
   return (
+    // @ts-ignore
+    // ??
     <div>
       {data.map((category: string) => {
         return (
