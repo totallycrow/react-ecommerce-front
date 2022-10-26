@@ -1,5 +1,4 @@
 import axios from "axios";
-import { IBasketState } from "../slices/basketSlice";
 import { IProduct } from "../types/productTypes";
 
 export interface IFetchedData {
